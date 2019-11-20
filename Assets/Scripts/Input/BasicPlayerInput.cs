@@ -34,24 +34,28 @@ public class BasicPlayerInput : MonoBehaviour
 
     // All of this callback can be found on the prefab attached to this script
     // Just click on "PlayerInput" script -> Events -> Name of the group action
-    // And just drag'n'drop whatever callback you want.
+    // And just drag'n'drop whatever callback you want. 
     public void OnMove(InputAction.CallbackContext context)
     {
+        Debug.Log("BasicPlayerInput : Move");
         m_Move = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
+        Debug.Log("BasicPlayerInput : Look");
         m_Look = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        Debug.Log("BasicPlayerInput : Jump");
         m_Jump = context.ReadValue<float>();
     }
 
     public void OnFire(InputAction.CallbackContext context)
     {
+        Debug.Log("BasicPlayerInput : Fire");
         switch (context.phase)
         {
             case InputActionPhase.Performed:

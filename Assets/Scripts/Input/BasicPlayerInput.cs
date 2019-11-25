@@ -53,6 +53,8 @@ public class BasicPlayerInput : MonoBehaviour
         m_Jump = context.ReadValue<float>();
     }
 
+    // I added here simple "context" exemple, if you want to do specific action on how the input was made.
+    // In Unity's exemple they used this state to make some kind of "Charging" shoot
     public void OnFire(InputAction.CallbackContext context)
     {
         Debug.Log("BasicPlayerInput : Fire");
@@ -66,5 +68,4 @@ public class BasicPlayerInput : MonoBehaviour
                 break;
         }
     }
-
 }

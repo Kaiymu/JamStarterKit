@@ -1,16 +1,16 @@
 # JamStarterKit
 Used to come with some basic stuff for a Unity jam
 
-# INTRODUCTION
+# Introduction
 This small project was created to help everyone start their GameJam with a starter kit
 The project includes a small script and prefab that uses the new Unity input system
 Also a small UI scene setupping so you just have to add your own behaviors
 This project is just a small helper for new comers to Unity that start with the Engine. 
 
-# REQUIREMENT 
+# Requirement 
 [Having Unity 2019.2.12f1 installed](https://unity3d.com/fr/get-unity/download/archive "Having Unity 2019.2.12f1 installed")
 
-# INPUT SYSTEM
+# Input system
 Unity 2019 provides inside the new InputPackage a way of handling Inputs.
 We did a small project already embedding that, so you should just need to take the package and start coding
 
@@ -119,7 +119,9 @@ Just drag'n'drop the "BasicPlayer" prefab inside your game, and code your behavi
 
 Use the "InputManger" gameobject inside "InputExempleScene" inside your Scene. 
 If it's a local split-screen game, click on "Enable Split Screen", attach a Camera to your "BasicPlayer" and add it the Camera to the "PlayerInput" script.
+
 If it's a local game, with only one camera, you're good to go (smile)
+
 If you don't want to spawn players when doing inputs, and do it yourself, just remove the "InputManager" script.
 In the end, the "BasicPlayerScript" receive all callbacks defined from your action, and that's it. You should normally be able to code from the get-go without having to setup anything (smile)
 

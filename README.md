@@ -7,6 +7,9 @@ The project includes a small script and prefab that uses the new Unity input sys
 Also a small UI scene setupping so you just have to add your own behaviors
 This project is just a small helper for new comers to Unity that start with the Engine. 
 
+#### Note : The "BasicPlayer3D" and "BasicPlayer2D" prefabs both have a Rigodbody / Rigidbody2D attached, allowing them to have physic applied to them / gravity.
+If you don't want your character to be simulated with Physic, just remove the components. Smile :)
+
 # Requirement 
 [Having Unity 2019.2.12f1 installed](https://unity3d.com/fr/get-unity/download/archive "Having Unity 2019.2.12f1 installed")
 

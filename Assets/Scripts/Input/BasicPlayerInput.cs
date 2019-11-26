@@ -8,23 +8,9 @@ using UnityEngine.InputSystem.Users;
 [RequireComponent(typeof(PlayerInput))]
 public class BasicPlayerInput : MonoBehaviour
 {
-    private PlayerInputManager _playerInputManager;
-    private PlayerInput _playerInput;
-
-    private Vector2 m_Look;
-    private float m_Jump;
-    private Vector2 m_Move;
-    private bool m_Charging;
-
-    private void Awake()
-    {
-        _playerInput = GetComponent<PlayerInput>();
-    }
-
-    private void Start()
-    {
-        _playerInputManager = FindObjectOfType<PlayerInputManager>();
-    }
+    private Vector2 _look;
+    private float jump;
+    private Vector2 _move;
 
     // Called when the device is disconnected
     public void DeviceLostEvent(PlayerInput test)
@@ -38,19 +24,19 @@ public class BasicPlayerInput : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         Debug.Log("BasicPlayerInput : Move");
-        m_Move = context.ReadValue<Vector2>();
+        _move = context.ReadValue<Vector2>();
     }
 
     public void OnLook(InputAction.CallbackContext context)
     {
         Debug.Log("BasicPlayerInput : Look");
-        m_Look = context.ReadValue<Vector2>();
+        _look = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
         Debug.Log("BasicPlayerInput : Jump");
-        m_Jump = context.ReadValue<float>();
+        jump = context.ReadValue<float>();
     }
 
     // I added here simple "context" exemple, if you want to do specific action on how the input was made.

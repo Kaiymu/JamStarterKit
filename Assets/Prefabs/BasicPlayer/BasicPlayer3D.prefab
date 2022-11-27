@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 343558473607436682}
   - component: {fileID: 5924792228959218987}
   - component: {fileID: 1115722982226783816}
-  - component: {fileID: 6074799824343754757}
   - component: {fileID: 3418100750094773387}
   - component: {fileID: 8541761809413920379}
   - component: {fileID: 8998785700109229229}
+  - component: {fileID: 6248725368986467009}
   m_Layer: 0
   m_Name: BasicPlayer3D
   m_TagString: Untagged
@@ -32,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -56,6 +57,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: 
         m_MethodName: DeviceLostEvent
         m_Mode: 0
         m_Arguments:
@@ -68,11 +70,27 @@ MonoBehaviour:
         m_CallState: 2
   m_DeviceRegainedEvent:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5328369948998010743}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnFire
         m_Mode: 0
         m_Arguments:
@@ -88,6 +106,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -103,6 +122,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnLook
         m_Mode: 0
         m_Arguments:
@@ -118,6 +138,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -130,6 +151,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3cfdc15b-93dc-4158-9013-e8565636888e
     m_ActionName: gameplay/Jump[/XInputControllerWindows/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1115722982226783816}
+        m_TargetAssemblyTypeName: BasicPlayerInput, Assembly-CSharp
+        m_MethodName: OnMousePosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 217913bb-ba09-4184-a11f-8ca297ee8513
+    m_ActionName: gameplay/MousePosition[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: gameplay
@@ -147,22 +184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa35da6c8c07df47b791d2395dd49e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &6074799824343754757
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5328369948998010743}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &3418100750094773387
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -187,9 +208,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -214,6 +238,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &8998785700109229229
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -222,3 +247,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5328369948998010743}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &6248725368986467009
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5328369948998010743}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

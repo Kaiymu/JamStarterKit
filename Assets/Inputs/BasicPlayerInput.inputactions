@@ -1,5 +1,5 @@
 {
-    "name": "SimpleControls",
+    "name": "BasicPlayerInput",
     "maps": [
         {
             "name": "gameplay",
@@ -11,7 +11,8 @@
                     "id": "33f346e9-60a8-48ca-a290-1e8b6843a5e1",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap"
+                    "interactions": "Tap,SlowTap",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "3cfdc15b-93dc-4158-9013-e8565636888e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Tap,SlowTap"
+                    "interactions": "Tap,SlowTap",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Move",
@@ -27,7 +29,8 @@
                     "id": "19063484-563b-4a1a-8af8-49493af4cfc6",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Look",
@@ -35,7 +38,17 @@
                     "id": "88d0bc25-b29a-43a8-88de-3a627f08d3fe",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePosition",
+                    "type": "Value",
+                    "id": "217913bb-ba09-4184-a11f-8ca297ee8513",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -168,6 +181,17 @@
                     "processors": "",
                     "groups": "MouseInput",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "125267be-8e0b-4cd0-9c63-9feed27d1077",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "MouseInput",
+                    "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

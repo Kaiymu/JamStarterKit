@@ -24,6 +24,12 @@ namespace Manager.Gameplay.Input
         public static OnMoveEvent OnMove;
 
         /// <summary>
+        /// Basic event to notify when the move input as been pressed
+        /// </summary>
+        public delegate void OnFireEvent(InputAction.CallbackContext context);
+        public static OnMoveEvent OnFire;
+
+        /// <summary>
         /// Called by Unity, see the order here <see href="https://docs.unity3d.com/Manual/ExecutionOrder.html"> the execution order</see> 
         /// </summary>
         private void Awake()
@@ -98,21 +104,52 @@ namespace Manager.Gameplay.Input
         private void Start()
         {
             // Move, if you prefer to send one event per context, you also can
-            _simpleControls.gameplay.Move.started += (ctx) =>
+            if (OnMove is not null)
             {
-                OnMove(ctx);
-            };
+                _simpleControls.gameplay.Move.started += (ctx) =>
+                {
+                    OnMove(ctx);
+                };
 
-            _simpleControls.gameplay.Move.performed += (ctx) =>
+                _simpleControls.gameplay.Move.performed += (ctx) =>
+                {
+                    OnMove(ctx);
+                };
+
+                _simpleControls.gameplay.Move.canceled += (ctx) =>
+                {
+                    OnMove(ctx);
+                };
+            }
+
+            // On fire
+
+            if (OnFire is not null)
             {
-                OnMove(ctx);
-            };
+                _simpleControls.gameplay.Fire.started += (ctx) =>
+                {
+                    OnFire(ctx);
+                };
 
-            _simpleControls.gameplay.Move.canceled += (ctx) =>
-            {
-                OnMove(ctx);
-            };
+                _simpleControls.gameplay.Fire.performed += (ctx) =>
+                {
+                    OnFire(ctx);
+                };
 
+                _simpleControls.gameplay.Fire.canceled += (ctx) =>
+                {
+                    OnFire(ctx);
+                };
+            }
+
+            _simpleControls.gameplay.MousePosition.started += OnMousePosition;
+            _simpleControls.gameplay.MousePosition.performed += OnMousePosition;
+            _simpleControls.gameplay.MousePosition.canceled += OnMousePosition;
+        }
+
+        public void OnMousePosition(InputAction.CallbackContext context)
+        {
+            Debug.Log($"InputManager : Mouse position : {context.ReadValue<Vector2>()}");
         }
 
         /// <summary>
@@ -134,6 +171,25 @@ namespace Manager.Gameplay.Input
             {
                 OnMove(ctx);
             };
+
+            _simpleControls.gameplay.Fire.started -= (ctx) =>
+            {
+                OnFire(ctx);
+            };
+
+            _simpleControls.gameplay.Fire.performed -= (ctx) =>
+            {
+                OnFire(ctx);
+            };
+
+            _simpleControls.gameplay.Fire.canceled -= (ctx) =>
+            {
+                OnFire(ctx);
+            };
+
+            _simpleControls.gameplay.MousePosition.started -= OnMousePosition;
+            _simpleControls.gameplay.MousePosition.performed -= OnMousePosition;
+            _simpleControls.gameplay.MousePosition.canceled -= OnMousePosition;
 
             InputSystem.onDeviceChange -= OnDeviceChanged;
         }

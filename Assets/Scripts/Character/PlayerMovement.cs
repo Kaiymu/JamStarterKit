@@ -43,5 +43,10 @@ namespace Gameplay.Movement {
         {
             transform.position = transform.position + (_direction * Time.deltaTime * _moveSpeed);
         }
+
+        private void OnDestroy()
+        {
+            InputManager.OnMove -= OnMove;
+        }
     }
 }

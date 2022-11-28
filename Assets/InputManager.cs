@@ -16,7 +16,6 @@ namespace Manager.Gameplay.Input
         /// Serialization to the SimpleControls input actions.
         /// </summary>
         private SimpleControls _simpleControls;
-        public Color color;
 
         /// <summary>
         /// Basic event to notify when the move input as been pressed

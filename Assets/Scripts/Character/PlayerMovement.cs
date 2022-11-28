@@ -1,39 +1,47 @@
-using Manager.Gameplay.InputSystem;
+using Manager.Gameplay.Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Gameplay.Movement {
-    public class PlayerMovement : MonoBehaviour, IPlayerMovement
+    public class PlayerMovement : MonoBehaviour
     {
-        // Créer une interface ?
         [Header("Speed of the character")]
         [SerializeField]
         [Range(1, 100)]
-        private float _playerSpeed;
+        private float _moveSpeed = 10f;
 
-        private Vector2 _move;
+        private Vector3 _direction;
 
         private void Start()
         {
             InputManager.OnMove += OnMove;
         }
 
+        /// <summary>
+        /// Change the move vector to the current context value.
+        /// If you prefer, you can have one event per context, if that's the case change that into the input manager.
+        /// </summary>
+        /// <param name="context">Input context sent by the InputManager.cs</param>
         public void OnMove(InputAction.CallbackContext context)
         {
-            Debug.LogError(context.phase);
             if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
             {
-                _move = context.ReadValue<Vector2>();
+                _direction = context.ReadValue<Vector2>();
             }
             else
             {
-                _move = Vector2.zero;
+                _direction = Vector2.zero;
             }
         }
 
         private void Update()
         {
-            transform.position = transform.position + new Vector3(_move.x * Time.deltaTime * _playerSpeed, _move.y * Time.deltaTime * _playerSpeed, 0);
+            Move();
+        }
+
+        private void Move()
+        {
+            transform.position = transform.position + (_direction * Time.deltaTime * _moveSpeed);
         }
     }
 }
